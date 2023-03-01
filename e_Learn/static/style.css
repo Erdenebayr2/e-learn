@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    overflow: hidden;
+}
+li{
+    float: left;
+    list-style:none;
+    padding: 20px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+li:hover{
+    background-color: gray;
+}
+ul{
+    width: 100%;
+    background-color: black;
+    height: 58px;
+}
+.text{
+    padding: 8px;
+    margin:12px 0px 0px 30px;
+    width: 300px;
+    float: left;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
