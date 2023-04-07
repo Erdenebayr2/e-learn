@@ -74,12 +74,16 @@ WSGI_APPLICATION = 'e_Learn.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'qrEticket',
+#         'USER': 'qreasyTicket',
+#         'PASSWORD': 'eba7khulan4',
+#         'HOST': '202.131.254.138',
+#         'PORT': '5938',
+#     }
+# }
 
 
 # Password validation
@@ -123,3 +127,11 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'eticket223@gmail.com'
+EMAIL_HOST_PASSWORD = 'ielcpanvnucbyihv'
