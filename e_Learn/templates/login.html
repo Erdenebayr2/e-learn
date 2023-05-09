@@ -1,17 +1,113 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Log in</title>
-  </head>
-  <body>
-    <h1>Log in</h1>
-    <form method="post">
-      {% csrf_token %}
-      <label for="uname">Username:</label><br>
-      <input type="text" id="username" name="username"><br><br>
-      <label for="Password">Password:</label><br>
-      <input type="password" id="password" name="password"><br><br>
-      <input type="submit" value="Log in">
-    </form>
-  </body>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нэвтрэх хэсэг</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="assets/css/style.css">
+    {% load static %} 
+<style>
+		/* Style the body */
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f1f1f1;
+		}
+
+		/* Style the login form */
+		.login-form {
+			max-width: 500px;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            color: #fff;
+		}
+
+		/* Style the input fields */
+		input[type=text], input[type=password],input[type=email] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+
+		/* Style the login button */
+		.button[type=submit] {
+			color: #fff;
+			padding: 12px 20px;
+			margin: 8px 0;
+			border: 1px solid white;
+			border-radius: 4px;
+			cursor: pointer;
+			width: 100%;
+            background-color: rgba(255, 255, 255, 0.027);
+		}
+        .button:hover{
+            background-color: rgb(255, 255, 255);
+            color: rgb(78, 187, 254);
+        }
+        .int{
+            background-color: rgb(255, 255, 255);
+        }
+
+		/* Add media queries for small screens */
+		@media screen and (max-width: 480px) {
+			.login-form {
+				margin-top: 30%;
+			}
+		}
+        .forget{
+            color: #ccc;
+        }
+        .forget:hover{
+            color: white;
+        }
+	</style>
+</style>
+</head>
+
+<body>
+    <div>
+        <div class="header-blue">
+            {% block content %}
+            {% include 'menu2.html' %}
+            {% endblock %}
+            <div class="container hero">
+                <div class="row">
+                    <div class="col-12 col-lg-6 col-xl-5 offset-xl-1">
+<h1>Хөгжмийн онлайн цогц сургалт E-LEARN</h1></div>
+                        <div class="col-12 col-lg-6 col-xl-5 offset-xl-1">
+                            <form class="login-form" method="post">
+                                {% csrf_token %}
+                                <h3>Нэвтрэх хэсэг</h3>
+
+                                <label for="uname">Хэрэглэгчийн нэр</label>
+                                <input type="text" id="uname" name="uname" placeholder="Нэрээ оруулна уу" class="int">
+    
+                                <label for="password">Нууц үг</label>
+                                <input type="password" id="password" name="password" class="int" placeholder="Нууц үгээ оруулна уу">
+                                
+                                <input type="checkbox" id="remember" name="remember" value="remember">
+                                <label for="remember">Намайг сана</label><br>
+                                <input type="submit" value="Нэвтрэх" class="button">
+                                <hr style="background-color: #ccc;">
+                                <a href="#" class="forget">Нууц үгээ мартсан...</a>
+                                
+                            </form>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>

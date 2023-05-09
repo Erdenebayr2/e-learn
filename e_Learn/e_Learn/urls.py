@@ -19,11 +19,12 @@ from learn import views
 
 urlpatterns = [
     path('', views.index , name='index'),
-    path('{lesson/}', views.lesson, name='lesson'),
-    path('{signup/}', views.signup, name='signup'),	
-    path('{account/}',views.account, name='account'),
-    path('{chat/}',views.chat, name='chat'),
-    path('{contact/}',views.contact, name='contact'),
-    path('login/', views.login, name='login'),
-    path('asd', views.asd, name='asd'),
+    path('lesson/', views.lesson, name='lesson'),
+    path('signup/', views.signup, name='signup'),	
+    path('account/',views.account, name='account'),
+    path('teacher/',views.teacher, name='teacher'),
+    path('contact/',views.contact, name='contact'),
+    path('log_in/', views.log_in, name='log_in'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('log_out/', views.log_out, name='log_out'),
 ]
