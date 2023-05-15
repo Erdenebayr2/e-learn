@@ -37,6 +37,15 @@
 			border-radius: 4px;
 			box-sizing: border-box;
 		}
+        select{
+            width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+        }
 
 		/* Style the login button */
 		.button[type=submit] {
@@ -48,6 +57,7 @@
 			cursor: pointer;
 			width: 100%;
             background-color: rgba(255, 255, 255, 0.027);
+            margin-top:20px;
 		}
         .button:hover{
             background-color: rgb(255, 255, 255);
@@ -81,15 +91,19 @@
                             <form class="login-form" method="post">
                                 {% csrf_token %}
                                 <h3>Бүртгэлийн хэсэг</h3>
-                                <label for="lastname">Хэрэглэгчийн овог</label>
-                                <input type="text" id="lastname" name="lastname" placeholder="Овогоо оруулна уу" class="int">
-                        
+
                                 <label for="username">Хэрэглэгчийн нэр</label>
                                 <input type="text" id="username" name="username" placeholder="Нэрээ оруулна уу" class="int">
-    
+
                                 <label for="receiver_email">Цахим хаяг</label>
                                 <input type="email" id="receiver_email" name="receiver_email" class="int" placeholder="Цахим хаягаа оруулна уу">
                                 
+                                <label for="lastname">Ямар эрхтэй бүртгүүлэх вэ?</label>
+                                <select name="lastname" class="int">
+                                  <option value="Багш">Багш</option>
+                                  <option value="Сурагч">Сурагч</option>
+                                </select>
+
                                 <input type="submit" value="Нэвтрэх" class="button">
                             </form></div>
                 </div>

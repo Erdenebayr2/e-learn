@@ -230,16 +230,19 @@
 
 </style></head>
 <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
-    <div class="container"><a class="navbar-brand" href="/">E-LEARN</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+    <div class="container"><a class="navbar-brand" href="">E-LEARN</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse"
             id="navcol-1">
             <ul class="nav navbar-nav">
                 <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Нүүр хуудас</a></li>
                 <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Хичээлүүд </a>
-                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">Гитар</a><a class="dropdown-item" role="presentation" href="#">Төгөлдөр хуур</a><a class="dropdown-item" role="presentation" href="#">Хийл</a></div>
+                    <div class="dropdown-menu" role="menu">
+                      <a class="dropdown-item" role="presentation" href="{% url 'learn_l' %}?torol='Гитар'">Гитар</a>
+                      <a class="dropdown-item" role="presentation" href="{% url 'learn_l' %}?torol='Төгөлдөр хуур'">Төгөлдөр хуур</a>
+                      <a class="dropdown-item" role="presentation" href="{% url 'learn_l' %}?torol='Хийл'">Хийл</a></div>
                 </li>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="#">Чат</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="#">Бидний тухай</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'contact' %}">Бидний тухай</a></li>
 
             </ul>
             <form class="form-inline mr-auto" target="_self">

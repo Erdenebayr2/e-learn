@@ -1,17 +1,149 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}  
+    <title>Untitled</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="assets/css/style.css">
+    {% load static %} 
+    <style>
+        .col-12.col-lg-6.col-xl-5.offset-xl-1{
+            opacity:1;
+            animation-name: example;
+            animation-duration: 3s;
+        }
+        @keyframes example {
+            from {opacity:0.3;}
+            to {opacity:1;}
+        }
+label{
+    color: white;
+}
+input[type="text"], input[type="file"]{
+    width: 100%;
+    height: 40px;
+    margin-bottom: 10px;
+}
+select{
+    width: 100%;
+    height: 40px;
+}
+.btnsb{
+    background-color: rgba(240, 248, 255, 0);
+    color: white;
+    border: 1px solid white;
+    padding: 8px;
+    cursor: pointer;
+}
+.btnsb:hover{
+    background-color: white;
+    color: rgb(0, 106, 255);
+}
+.ovrflw{
+    overflow: auto;
+    height: 400px;
+    padding: 20px;
+}
+    </style>
+
 </head>
+
 <body>
-    {% block content %}
-    {% include 'menu.html' %}
-    {% endblock %}
-<h1>this is lesson page</h1>
+    <div>
+        <div class="header-blue">
+            {% block content %}
+            {% include 'teacher_menu.html' %}
+            {% endblock %}
+            <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+                <div class="container"><a class="navbar-brand" href="/">E-LEARN</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse"
+                        id="navcol-1">
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#">Нүүр хуудас</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link active" href="{% url 'lesson' %}">Миний хичээл</a></li>
+                            <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Хичээлүүд </a>
+                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="{% url 'learn_l' %}">Гитар</a><a class="dropdown-item" role="presentation" href="{% url 'learn_l' %}">Төгөлдөр хуур</a><a class="dropdown-item" role="presentation" href="{% url 'learn_l' %}">Хийл</a></div>
+                            </li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#">Чат</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#">Бидний тухай</a></li>
+            
+                        </ul>
+                        <form class="form-inline mr-auto" target="_self">
+                            <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" name="search" id="search-field"></div>
+                        </form>
+                        <form action="{% url 'log_out' %}" method="post">
+                            {% csrf_token %}    
+                        <input type="submit" value="Гарах" class="btn btn-light action-button">
+                        </form></div>
+                </div>
+            </nav>
+            <div class="container hero">
+                <div class="row">
+                    <div class="col-xs-6 col-md-4">
+                        <div class="container">
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <label for="vtitle">Гарчиг:</label><br>
+                                <input type="text" name="vtitle" id="vtitle"><br>
+
+                                <label for="video">Бичлэг:</label><br>
+                                <input type="file" name="video" id="video"><br>
+
+                                <label for="t_type">Хөгжмийн төрөл:</label><br>
+                                <select name="t_type">
+                                  <option value="">Сонгоно уу?</option>
+                                  <option value="Гитар">Гитар</option>
+                                  <option value="Төгөлдөр хуур">Төгөлдөр хуур</option>
+                                  <option value="Хийл">Хийл</option>
+                                </select><br>
+
+                                <label for="desc" style="margin-top: 10px;">Тайлбар:</label><br>
+                                <input type="text" name="desc" id="desc"><br><br>
+                                <button type="submit" class="btnsb">Бичлэг нэмэх</button>
+                            </form>
+                        </div>
+                
+                </div>
+                <div class="col-xs-12 col-md-8">
+                    <div class="container" style="color: white;">
+                    Сүүлд нэмэгдсэн бичлэгүүд
+                    <div class="ovrflw">
+                    {% if name %}
+                    {% for x in data %}
+                    {% if x.5 == name %}
+                    <div style="float:left">
+                        <h2 class="text-center mt-2 mb-2">{{x.5}} - {{x.1}}
+                            <button style="font-size:20px" class="btnsb" type="submit"><i class="fa fa-edit"></i>
+                        </h2>
+                        <video class="video-fluid" controls="controls" width="100%">
+                            <source src="../media/{{x.3}}.mp4" type="video/mp4"/>
+                        </video>
+                    <h5>{{x.2}} 
+                        <form method="POST" action="{% url 'delete' %}" style="float: right;">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{ x.0 }}">
+                            <button type="submit" class="btnsb" style="font-size: 15px;padding: 5px;">
+                                Устгах <i class="fa fa-trash-o"></i></button>
+                          </form>
+                        </h5>
+                        </div>
+                    {% endif%}
+                    {% endfor %}
+                {%else%}
+                <h1>Таньд одоогоор оруулсан бичлэг байхгүй байна</h1>
+                {%endif%}</div>
+                </div></div>
+            </div>
+        </div><p></p>
+    </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </body>
+
 </html>
